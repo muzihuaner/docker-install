@@ -112,7 +112,7 @@
             <li>阿里云镜像：<code>--mirror Aliyun</code></li>
             <li>Azure 中国云镜像：<code>--mirror AzureChinaCloud</code></li>
         </ul>
-        <pre><code>sudo sh install-docker.sh --mirror AzureChinaCloud</code></pre>
+        <pre><code>sudo sh install-docker.sh --mirror Aliyun</code></pre>
 
         <h3>Docker镜像仓库配置</h3>
         <pre><code class="language-bash" language="bash"><span class="md-editor-code-block"><span class="hljs-built_in">echo</span> <span class="hljs-string">'{"registry-mirrors": ["https://docker.1ms.run"]}'</span> | <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> /etc/docker/daemon.json &gt; /dev/null
