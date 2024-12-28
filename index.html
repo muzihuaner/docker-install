@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker 一键安装脚本</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #007bff;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #f4f4f4;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Docker 一键安装脚本</h1>
+    </header>
+
+    <main>
+        <h2>脚本说明</h2>
+        <p>本安装脚本提供了一种便捷方式，用于配置 Docker 的软件包仓库并安装 Docker
+            Engine。<strong>不建议在生产环境中直接使用此脚本</strong>。运行脚本之前，请确保了解相关的风险和限制，并参阅官方 <a
+                href="https://docs.docker.com/engine/install/" target="_blank">安装手册</a> 获取其他安装方法。</p>
+
+        <h3>功能特点</h3>
+        <ul>
+            <li>需要 <code>root</code> 或 <code>sudo</code> 权限。</li>
+            <li>自动检测您的 Linux 发行版和版本，并配置相应的软件包管理系统。</li>
+            <li>不支持大多数安装参数的自定义。</li>
+            <li>自动安装依赖项并推荐组件，无需确认。</li>
+            <li>默认安装最新稳定版，包括 Docker CLI、Docker Engine、Docker Buildx、Docker Compose、containerd 和 runc。</li>
+            <li>不适用于升级已有的 Docker 安装。</li>
+        </ul>
+
+        <h2>安装步骤</h2>
+        <h3>1. 下载脚本</h3>
+        <pre><code>curl -fsSL https://cdn.jsdelivr.net/gh/muzihuaner/docker-install@master/install.sh -o install-docker.sh</code></pre>
+        <blockquote>可替换域名：
+            <p>
+                CloudFlare：<code>test1.jsdelivr.net</code><br>
+                CloudFlare：<code>testingcf.jsdelivr.net</code><br>
+                Fastly：<code>fastly.jsdelivr.net</code><br>
+                GCORE：<code>gcore.jsdelivr.net</code><br>
+                JSDMirror：<code>www.jsdmirror.com</code><br>
+            </p>
+        </blockquote>
+        <h3>2. 验证脚本内容</h3>
+        <pre><code>cat install-docker.sh</code></pre>
+
+        <h3>3. 使用 --dry-run 检查安装步骤</h3>
+        <pre><code>sh install-docker.sh --dry-run</code></pre>
+
+        <h3>4. 运行脚本安装 Docker</h3>
+        <pre><code>sudo sh install-docker.sh</code></pre>
+
+        <h2>命令行选项</h2>
+        <h3>安装特定版本</h3>
+        <p>使用 <code>--version</code> 参数指定安装的 Docker 版本，例如：</p>
+        <pre><code>sudo sh install-docker.sh --version 23.0</code></pre>
+
+        <h3>选择安装渠道</h3>
+        <p>使用 <code>--channel</code> 参数选择安装渠道，例如安装测试版本：</p>
+        <pre><code>sudo sh install-docker.sh --channel test</code></pre>
+
+        <h3>使用镜像源(国内推荐使用)</h3>
+        <p>使用 <code>--mirror</code> 参数选择镜像源，例如：</p>
+        <ul>
+            <li>阿里云镜像：<code>--mirror Aliyun</code></li>
+            <li>Azure 中国云镜像：<code>--mirror AzureChinaCloud</code></li>
+        </ul>
+        <pre><code>sudo sh install-docker.sh --mirror AzureChinaCloud</code></pre>
+
+        <h3>Docker镜像仓库配置</h3>
+        <pre><code class="language-bash" language="bash"><span class="md-editor-code-block"><span class="hljs-built_in">echo</span> <span class="hljs-string">'{"registry-mirrors": ["https://docker.1ms.run"]}'</span> | <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> /etc/docker/daemon.json &gt; /dev/null
+        systemctl daemon-reload
+        systemctl restart docker</span><span rn-wrapper="" aria-hidden="true"><span></span><span></span><span></span></span></code></pre>
+    </main>
+
+    <footer>
+        <p>更多信息请访问 <a href="https://github.com/muzihuaner/docker-install/" target="_blank">GitHub</a></p>
+    </footer>
+
+</body>
+
+</html>
