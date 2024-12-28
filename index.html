@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docker 一键安装脚本</title>
+    <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.loli.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -116,6 +118,7 @@
         <pre><code class="language-bash" language="bash"><span class="md-editor-code-block"><span class="hljs-built_in">echo</span> <span class="hljs-string">'{"registry-mirrors": ["https://docker.1ms.run"]}'</span> | <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> /etc/docker/daemon.json &gt; /dev/null
         systemctl daemon-reload
         systemctl restart docker</span><span rn-wrapper="" aria-hidden="true"><span></span><span></span><span></span></span></code></pre>
+        <a href="https://jk.quickso.cn/status/docker">Docker镜像仓库监控</a>
     </main>
 
     <footer>
