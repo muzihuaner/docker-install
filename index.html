@@ -7,6 +7,8 @@
     <title>Docker 一键安装脚本</title>
     <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://cdnjs.loli.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,6 +67,9 @@
         <p>
             Docker是一种开源的容器化平台，旨在简化软件的开发、部署和运行。它通过将应用程序及其所有依赖项打包到一个轻量级、可移植的容器中，使得应用能够在任何支持Docker的环境中一致运行，无需担心底层操作系统的差异。Docker利用容器技术提供隔离性，确保应用之间互不干扰，同时比传统虚拟机更加高效，启动速度快，占用资源少。它广泛应用于持续集成/持续部署（CI/CD）、微服务架构和跨环境部署中，极大提升了开发和运维的效率。</p>
         <h2>脚本说明</h2>
+        <a href="https://github.com/muzihuaner/docker-install/"><img src="https://img.shields.io/github/stars/muzihuaner/docker-install" alt=""></a>
+        <img src="https://img.shields.io/github/license/muzihuaner/docker-install" alt="">
+        <img src="https://img.shields.io/github/contributors/muzihuaner/docker-install" alt="">
         <p>本安装脚本提供了一种便捷方式，用于配置 Docker 的软件包仓库并安装 Docker
             Engine。<strong>不建议在生产环境中直接使用此脚本</strong>。运行脚本之前，请确保了解相关的风险和限制，也可以参考官方 <a
                 href="https://docs.docker.com/engine/install/" target="_blank">安装手册</a> 获取其他安装方法。</p>
@@ -81,7 +86,7 @@
 
         <h2>安装步骤</h2>
         <h3>1. 下载脚本</h3>
-        <pre><code>curl -fsSL https://cdn.jsdelivr.net/gh/muzihuaner/docker-install@master/install.sh -o install-docker.sh</code></pre>
+        <pre><code class="copyable">curl -fsSL https://cdn.jsdelivr.net/gh/muzihuaner/docker-install@master/install.sh -o install-docker.sh</code></pre>
         <blockquote>可替换域名：
             <p>
                 CloudFlare：<code>test1.jsdelivr.net</code><br>
@@ -92,22 +97,22 @@
             </p>
         </blockquote>
         <h3>2. 验证脚本内容</h3>
-        <pre><code>cat install-docker.sh</code></pre>
+        <pre><code class="copyable">cat install-docker.sh</code></pre>
 
-        <h3>3. 使用 --dry-run 检查安装步骤</h3>
-        <pre><code>sh install-docker.sh --dry-run</code></pre>
+        <h3>3. 使用 --dry-run 检查安装步骤(可选)</h3>
+        <pre><code class="copyable">sh install-docker.sh --dry-run</code></pre>
 
         <h3>4. 运行脚本安装 Docker</h3>
-        <pre><code>sudo sh install-docker.sh</code></pre>
+        <pre><code class="copyable">sudo sh install-docker.sh</code></pre>
 
         <h2>命令行选项</h2>
         <h3>安装特定版本</h3>
         <p>使用 <code>--version</code> 参数指定安装的 Docker 版本，例如：</p>
-        <pre><code>sudo sh install-docker.sh --version 23.0</code></pre>
+        <pre><code class="copyable">sudo sh install-docker.sh --version 23.0</code></pre>
 
         <h3>选择安装渠道</h3>
         <p>使用 <code>--channel</code> 参数选择安装渠道，例如安装测试版本：</p>
-        <pre><code>sudo sh install-docker.sh --channel test</code></pre>
+        <pre><code class="copyable">sudo sh install-docker.sh --channel test</code></pre>
 
         <h3>使用镜像源(国内推荐使用)</h3>
         <p>使用 <code>--mirror</code> 参数选择镜像源，例如：</p>
@@ -115,21 +120,21 @@
             <li>阿里云镜像：<code>--mirror Aliyun</code></li>
             <li>Azure 中国云镜像：<code>--mirror AzureChinaCloud</code></li>
         </ul>
-        <pre><code>sudo sh install-docker.sh --mirror Aliyun</code></pre>
+        <pre><code class="copyable">sudo sh install-docker.sh --mirror Aliyun</code></pre>
         <h3>Docker Compose安装</h3>
         <p>Compose 是用于定义和运行多容器 Docker 应用程序的工具。通过 Compose，您可以使用 YML 文件来配置应用程序需要的所有服务。然后，使用一个命令，就可以从 YML 文件配置中创建并启动所有服务。</p>
         <p>Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：<a href="https://github.com/docker/compose/releases"
                 rel="noopener noreferrer" target="_blank">https://github.com/docker/compose/releases</a>。</p>
-        <pre><code>sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        <pre><code class="copyable">sudo curl -L "https://github.com/docker/compose/releases/download/v2.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         </code></pre>
         <p>将可执行权限应用于二进制文件：</p>
-        <pre><code>sudo chmod +x /usr/local/bin/docker-compose</code></pre>
+        <pre><code class="copyable">sudo chmod +x /usr/local/bin/docker-compose</code></pre>
         <p>创建软链：</p>
-        <pre><code>sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose/<code></pre>
+        <pre><code class="copyable">sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose/<code></pre>
         <p>测试是否安装成功：</p>
-        <pre><code>docker-compose --version</code></pre>
+        <pre><code class="copyable">docker-compose --version</code></pre>
         <h3>Docker镜像仓库配置</h3>
-        <pre><code class="language-bash" language="bash"><span class="md-editor-code-block"><span class="hljs-built_in">echo</span> <span class="hljs-string">'{"registry-mirrors": ["https://docker.1ms.run"]}'</span> | <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> /etc/docker/daemon.json &gt; /dev/null
+        <pre><code class="copyable" language="bash"><span class="md-editor-code-block"><span class="hljs-built_in">echo</span> <span class="hljs-string">'{"registry-mirrors": ["https://docker.1ms.run"]}'</span> | <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> /etc/docker/daemon.json &gt; /dev/null
         systemctl daemon-reload
         systemctl restart docker</span><span rn-wrapper="" aria-hidden="true"><span></span><span></span><span></span></span></code></pre>
         <a href="https://jk.quickso.cn/status/docker">Docker镜像仓库监控</a>
@@ -190,7 +195,26 @@
             }
         </style>
     </a>
-
+    <script>
+        // 初始化 Clipboard.js，绑定到 .copyable 元素
+        const clipboard = new ClipboardJS('.copyable', {
+          text: function(trigger) {
+            return trigger.textContent; // 返回 code 的文本内容
+          }
+        });
+      
+        // 复制成功提示
+        clipboard.on('success', function(e) {
+          alert('复制成功!');
+          e.clearSelection();
+        });
+      
+        // 复制失败提示
+        clipboard.on('error', function(e) {
+          alert('复制失败，请手动复制。');
+        });
+      </script>
+      
 </body>
 
 </html>
