@@ -1,68 +1,63 @@
 # docker/docker-install
-Home of the script that lives at `get.docker.com` and `test.docker.com`!
+这是 `get.docker.com` 和 `test.docker.com` 安装脚本的源代码仓库！
 
-The purpose of the install script is for a convenience for quickly
-installing the latest Docker-CE releases on the supported linux
-distros. It is not recommended to depend on this script for deployment
-to production systems. For more thorough instructions for installing
-on the supported distros, see the [install
-instructions](https://docs.docker.com/engine/install/).
+本安装脚本的目的是为了方便在支持的 Linux 发行版上快速安装最新版本的 Docker-CE。
+不建议在生产系统部署中依赖此脚本。有关在支持的发行版上安装的更详细说明，
+请参阅[安装说明](https://docs.docker.com/engine/install/)。
 
-This repository is solely maintained by Docker, Inc.
+本仓库由 Docker, Inc. 独家维护。
 
-## Usage:
+## 使用方法：
 
-From `https://get.docker.com`:
+从 `https://get.docker.com` 安装：
 ```shell
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 ```
 
-From `https://test.docker.com`:
+从 `https://test.docker.com` 安装：
 ```shell
 curl -fsSL https://test.docker.com -o test-docker.sh
 sh test-docker.sh
 ```
 
-From the source repo (This will install latest from the `stable` channel):
+从源代码仓库安装（这将从`stable`通道安装最新版本）：
 ```shell
 sh install.sh
 ```
 
-## Testing:
+## 测试：
 
-To verify that the install script works amongst the supported operating systems run:
+要验证安装脚本在支持的操作系统中是否正常工作，请运行：
 
 ```shell
 make shellcheck
 ```
 
-## Legal
-*Brought to you courtesy of our legal counsel. For more context,
-please see the [NOTICE](NOTICE) document in this repo.*
+## 法律声明
+*此声明由我们的法律顾问提供。更多上下文信息，
+请参阅本仓库中的 [NOTICE](NOTICE) 文档。*
 
-Use and transfer of Docker may be subject to certain restrictions by the
-United States and other governments.
+Docker 的使用和转让可能受到美国和其他政府的某些限制。
 
-It is your responsibility to ensure that your use and/or transfer does not
-violate applicable laws.
+确保您的使用和/或转让不违反适用法律是您的责任。
 
-For more information, please see https://www.bis.doc.gov
+更多信息，请访问 https://www.bis.doc.gov
 
-## Reporting security issues
+## 报告安全问题
 
-The maintainers take security seriously. If you discover a security issue,
-please bring it to their attention right away!
+维护者非常重视安全问题。如果您发现安全漏洞，
+请立即告知我们！
 
-Please **DO NOT** file a public issue, instead send your report privately to
-[security@docker.com](mailto:security@docker.com).
+请**不要**公开提交问题，而是将您的报告私下发送至
+[security@docker.com](mailto:security@docker.com)。
 
-Security reports are greatly appreciated and we will publicly thank you for it.
-We also like to send gifts—if you're into Docker schwag, make sure to let
-us know. We currently do not offer a paid security bounty program, but are not
-ruling it out in the future.
+我们非常感谢安全报告，并会公开感谢您的贡献。
+我们也喜欢赠送礼物—如果您对 Docker 周边感兴趣，请务必告诉
+我们。目前我们没有提供付费的安全漏洞奖励计划，但不排除
+将来会推出。
 
-## Licensing
+## 许可证
 
-docker/docker-install is licensed under the Apache License, Version 2.0.
-See [LICENSE](LICENSE) for the full license text.
+docker/docker-install 基于 Apache License, Version 2.0 授权。
+完整的许可证文本请参见 [LICENSE](LICENSE)。
