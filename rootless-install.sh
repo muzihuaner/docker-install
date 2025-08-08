@@ -16,15 +16,15 @@ set -e
 #
 # Git commit from https://github.com/docker/docker-install when
 # the script was uploaded (Should only be modified by upload job):
-SCRIPT_COMMIT_SHA=UNKNOWN
+SCRIPT_COMMIT_SHA="$LOAD_SCRIPT_COMMIT_SHA"
 
 # This script should be run with an unprivileged user and install/setup Docker under $HOME/bin/.
 
 # latest version available in the stable channel.
-STABLE_LATEST="27.5.1"
+STABLE_LATEST="28.3.3"
 
 # latest version available in the test channel.
-TEST_LATEST="28.0.0-rc.1"
+TEST_LATEST="28.3.3"
 
 # The channel to install from:
 #   * test
