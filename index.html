@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docker 一键安装脚本 - 专业开发者工具</title>
+    <meta name="description" content="快点Docker一键安装脚本，支持Linux系统自动化部署Docker和Docker Compose，提供国内镜像源加速，配置简单高效，适合生产环境使用。">
+    <meta name="keywords" content="Docker安装,Docker一键安装,Docker Compose,Linux Docker部署,容器化,Docker镜像源,Docker自动化安装">
+    <title>快点Docker一键安装脚本</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -42,7 +44,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 002-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                     </svg>
                 </div>
-                <span class="font-bold tracking-tight text-slate-800">DOCKER-INSTALL</span>
+                <span class="font-bold tracking-tight text-slate-800">QUICK-DOCKER-INSTALL</span>
             </div>
             <a href="https://github.com/muzihuaner/docker-install/" target="_blank" class="text-sm font-medium text-slate-600 hover:text-emerald-600 transition-colors">
                 GitHub →
@@ -129,38 +131,59 @@
                 </section>
 
                 <section id="advanced" class="space-y-8 pt-8 border-t border-slate-200">
-                    <h2 class="text-xl font-bold uppercase tracking-wider text-slate-800 flex items-center gap-3">
-                        <span class="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
-                        进阶选项
-                    </h2>
+    <h2 class="text-xl font-bold uppercase tracking-wider text-slate-800 flex items-center gap-3">
+        <span class="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
+        进阶选项
+    </h2>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="p-5 border border-slate-200 rounded-xl hover:border-emerald-200 transition-all">
-                            <h3 class="font-bold text-slate-800 mb-2">国内镜像源</h3>
-                            <p class="text-sm text-slate-500 mb-4">在中国大陆境内服务器上使用以加速下载。</p>
-                            <pre class="text-[13px] bg-slate-50 p-3 rounded border border-slate-100"><code>--mirror Aliyun</code></pre>
-                        </div>
-                        <div class="p-5 border border-slate-200 rounded-xl hover:border-emerald-200 transition-all">
-                            <h3 class="font-bold text-slate-800 mb-2">版本锁定</h3>
-                            <p class="text-sm text-slate-500 mb-4">指定安装特定的 Docker 引擎版本。</p>
-                            <pre class="text-[13px] bg-slate-50 p-3 rounded border border-slate-100"><code>--version 23.0</code></pre>
-                        </div>
-                    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-5 border border-slate-200 rounded-xl hover:border-emerald-200 transition-all">
+            <h3 class="font-bold text-slate-800 mb-2">国内镜像源</h3>
+            <p class="text-sm text-slate-500 mb-4">在中国大陆境内服务器上使用以加速安装包下载。</p>
+            <div class="space-y-2">
+                <code class="block text-[12px] bg-slate-50 p-2 rounded border border-slate-100 text-emerald-700">--mirror Aliyun</code>
+                <code class="block text-[12px] bg-slate-50 p-2 rounded border border-slate-100 text-emerald-700">--mirror AzureChinaCloud</code>
+            </div>
+        </div>
+        <div class="p-5 border border-slate-200 rounded-xl hover:border-emerald-200 transition-all">
+            <h3 class="font-bold text-slate-800 mb-2">版本锁定</h3>
+            <p class="text-sm text-slate-500 mb-4">指定安装特定的 Docker 引擎版本（例如 23.0）。</p>
+            <code class="block text-[11px] bg-slate-100 p-2 rounded text-slate-700">--version 23.0</code>
+        </div>
+    </div>
 
-                    <div class="space-y-4">
-                        <h3 class="font-bold text-slate-800">镜像加速器配置</h3>
-                        <p class="text-sm text-slate-600">执行以下命令快速配置 Registry Mirrors：</p>
-                        <div class="relative rounded-lg overflow-hidden border border-slate-700">
-                            <div class="code-block-header px-4 py-2 flex justify-between items-center text-xs text-slate-400">
-                                <span>bash</span>
-                                <button class="copy-btn hover:text-white transition-colors" data-clipboard-text="echo '{&quot;registry-mirrors&quot;: [&quot;https://docker.1ms.run&quot;]}' | sudo tee /etc/docker/daemon.json > /dev/null && systemctl daemon-reload && systemctl restart docker">复制</button>
-                            </div>
-                            <pre class="m-0"><code class="language-bash">echo '{"registry-mirrors": ["https://docker.1ms.run"]}' | sudo tee /etc/docker/daemon.json > /dev/null
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-5 border border-slate-200 rounded-xl hover:border-emerald-200 transition-all">
+            <h3 class="font-bold text-slate-800 mb-1 text-sm">安装频道</h3>
+            <p class="text-[12px] text-slate-500 mb-3">切换稳定版或测试版(预发布)。</p>
+            <code class="block text-[11px] bg-slate-100 p-2 rounded text-slate-700">--channel stable|test</code>
+        </div>
+        <div class="p-5 border border-slate-200 rounded-xl hover:border-emerald-200 transition-all">
+            <h3 class="font-bold text-slate-800 mb-1 text-sm">仅配置仓库</h3>
+            <p class="text-[12px] text-slate-500 mb-3">仅添加 Repo 源而不执行安装。</p>
+            <code class="block text-[11px] bg-slate-100 p-2 rounded text-slate-700">--setup-repo</code>
+        </div>
+        <div class="p-5 border border-slate-200 rounded-xl hover:border-emerald-200 transition-all">
+            <h3 class="font-bold text-slate-800 mb-1 text-sm">禁用自动启动</h3>
+            <p class="text-[12px] text-slate-500 mb-3">安装后不立即启动 Docker 服务。</p>
+            <code class="block text-[11px] bg-slate-100 p-2 rounded text-slate-700">--no-autostart</code>
+        </div>
+    </div>
+
+    <div class="space-y-4">
+        <h3 class="font-bold text-slate-800">镜像加速器配置 (Registry Mirror)</h3>
+        <p class="text-sm text-slate-600">这是针对 Docker Hub 镜像下载慢的优化（安装后执行）：</p>
+        <div class="relative rounded-lg overflow-hidden border border-slate-700">
+            <div class="code-block-header px-4 py-2 flex justify-between items-center text-xs text-slate-400">
+                <span>bash</span>
+                <button class="copy-btn hover:text-white transition-colors" data-clipboard-text="echo '{&quot;registry-mirrors&quot;: [&quot;https://docker.1ms.run&quot;]}' | sudo tee /etc/docker/daemon.json > /dev/null && systemctl daemon-reload && systemctl restart docker">复制</button>
+            </div>
+            <pre class="m-0"><code class="language-bash">echo '{"registry-mirrors": ["https://docker.1ms.run"]}' | sudo tee /etc/docker/daemon.json > /dev/null
 systemctl daemon-reload
 systemctl restart docker</code></pre>
-                        </div>
-                    </div>
-                </section>
+        </div>
+    </div>
+</section>
             </div>
 
             <div class="space-y-8">
