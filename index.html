@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker 一键安装脚本 - 专业开发者工具</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: #f8fafc;
+        }
+
+        code, pre {
+            font-family: 'JetBrains Mono', monospace !important;
+        }
+
+        /* 隐藏滚动条但保留功能 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        .code-block-header {
+            background: #1e293b;
+            border-bottom: 1px solid #334155;
+        }
+    </style>
+</head>
+
+<body class="text-slate-900 antialiased">
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-slate-900 flex items-center justify-center rounded">
+                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 002-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <span class="font-bold tracking-tight text-slate-800">DOCKER-INSTALL</span>
+            </div>
+            <a href="https://github.com/muzihuaner/docker-install/" target="_blank" class="text-sm font-medium text-slate-600 hover:text-emerald-600 transition-colors">
+                GitHub →
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-12 md:py-20">
+        <section class="mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+                高效、干净的 <span class="text-emerald-600">Docker</span> <br>一键部署方案
+            </h1>
+            <p class="text-lg text-slate-600 max-w-2xl leading-relaxed mb-8">
+                本脚本专为生产环境设计，自动检测发行版，配置最优化仓库源，集成 Compose 等核心组件。
+            </p>
+            
+            <div class="flex flex-wrap gap-3">
+                <a href="https://github.com/muzihuaner/docker-install/">
+                    <img src="https://img.shields.io/github/stars/muzihuaner/docker-install?style=flat&color=10b981" alt="stars">
+                </a>
+                <img src="https://img.shields.io/github/license/muzihuaner/docker-install?style=flat&color=64748b" alt="license">
+                <img src="https://img.shields.io/github/contributors/muzihuaner/docker-install?style=flat&color=64748b" alt="contributors">
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-2 space-y-12">
+                
+                <section id="install">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold">1</span>
+                        <h2 class="text-xl font-bold uppercase tracking-wider text-slate-800">快速安装</h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="group">
+                            <label class="block text-sm font-semibold text-slate-500 mb-2 italic">第一步：下载安装脚本</label>
+                            <div class="relative rounded-lg overflow-hidden border border-slate-700">
+                                <div class="code-block-header px-4 py-2 flex justify-between items-center text-xs text-slate-400">
+                                    <span>bash</span>
+                                    <button class="copy-btn hover:text-white transition-colors" data-clipboard-text="curl -fsSL https://cdn.jsdelivr.net/gh/muzihuaner/docker-install@master/install.sh -o install-docker.sh">复制命令</button>
+                                </div>
+                                <pre class="m-0"><code class="language-bash">curl -fsSL https://cdn.jsdelivr.net/gh/muzihuaner/docker-install@master/install.sh -o install-docker.sh</code></pre>
+                            </div>
+                            <div class="mt-3 p-4 bg-slate-100 rounded-md border-l-4 border-slate-300">
+                                <p class="text-xs text-slate-600 leading-5">
+                                    <strong>CDN 备选：</strong> 若连接缓慢，可将域名替换为：<br>
+                                    <code class="text-[11px] text-emerald-700 bg-emerald-50 px-1">fastly.jsdelivr.net</code> · <code class="text-[11px] text-emerald-700 bg-emerald-50 px-1">gcore.jsdelivr.net</code> · <code class="text-[11px] text-emerald-700 bg-emerald-50 px-1">cdn.jsdmirror.com</code>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="group pt-4">
+                            <label class="block text-sm font-semibold text-slate-500 mb-2 italic">第二步：执行安装</label>
+                            <div class="relative rounded-lg overflow-hidden border border-slate-700">
+                                <div class="code-block-header px-4 py-2 flex justify-between items-center text-xs text-slate-400">
+                                    <span>bash</span>
+                                    <button class="copy-btn hover:text-white transition-colors" data-clipboard-text="sudo sh install-docker.sh">复制命令</button>
+                                </div>
+                                <pre class="m-0"><code class="language-bash">sudo sh install-docker.sh</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="advanced" class="space-y-8 pt-8 border-t border-slate-200">
+                    <h2 class="text-xl font-bold uppercase tracking-wider text-slate-800 flex items-center gap-3">
+                        <span class="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
+                        进阶选项
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="p-5 border border-slate-200 rounded-xl hover:border-emerald-200 transition-all">
+                            <h3 class="font-bold text-slate-800 mb-2">国内镜像源</h3>
+                            <p class="text-sm text-slate-500 mb-4">在中国大陆境内服务器上使用以加速下载。</p>
+                            <pre class="text-[13px] bg-slate-50 p-3 rounded border border-slate-100"><code>--mirror Aliyun</code></pre>
+                        </div>
+                        <div class="p-5 border border-slate-200 rounded-xl hover:border-emerald-200 transition-all">
+                            <h3 class="font-bold text-slate-800 mb-2">版本锁定</h3>
+                            <p class="text-sm text-slate-500 mb-4">指定安装特定的 Docker 引擎版本。</p>
+                            <pre class="text-[13px] bg-slate-50 p-3 rounded border border-slate-100"><code>--version 23.0</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-slate-800">镜像加速器配置</h3>
+                        <p class="text-sm text-slate-600">执行以下命令快速配置 Registry Mirrors：</p>
+                        <div class="relative rounded-lg overflow-hidden border border-slate-700">
+                            <div class="code-block-header px-4 py-2 flex justify-between items-center text-xs text-slate-400">
+                                <span>bash</span>
+                                <button class="copy-btn hover:text-white transition-colors" data-clipboard-text="echo '{&quot;registry-mirrors&quot;: [&quot;https://docker.1ms.run&quot;]}' | sudo tee /etc/docker/daemon.json > /dev/null && systemctl daemon-reload && systemctl restart docker">复制</button>
+                            </div>
+                            <pre class="m-0"><code class="language-bash">echo '{"registry-mirrors": ["https://docker.1ms.run"]}' | sudo tee /etc/docker/daemon.json > /dev/null
+systemctl daemon-reload
+systemctl restart docker</code></pre>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="space-y-8">
+                <div class="bg-slate-900 rounded-2xl p-6 text-white shadow-xl shadow-slate-200">
+                    <h3 class="text-emerald-400 font-bold mb-4 uppercase tracking-widest text-xs">功能特性</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-emerald-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="3"></path></svg>
+                            <span>自动检测 Linux 发行版与架构</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-emerald-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="3"></path></svg>
+                            <span>内置 Docker Compose 安装</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-emerald-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="3"></path></svg>
+                            <span>非交互式，适合自动化脚本</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-emerald-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="3"></path></svg>
+                            <span>默认配置最新稳定通道</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="p-6 bg-white border border-slate-200 rounded-2xl">
+                    <h3 class="font-bold text-slate-800 mb-4">相关资源</h3>
+                    <div class="space-y-3 flex flex-col">
+                        <a href="https://docs.docker.com/" target="_blank" class="text-sm text-slate-600 hover:text-emerald-600 flex items-center gap-2 transition-colors">
+                            <span>官方文档</span>
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2"></path></svg>
+                        </a>
+                        <a href="https://www.runoob.com/docker/docker-tutorial.html" target="_blank" class="text-sm text-slate-600 hover:text-emerald-600 flex items-center gap-2 transition-colors">
+                            <span>菜鸟教程</span>
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <p class="text-sm text-slate-500 mb-4 font-medium">遵循 MIT 开源协议</p>
+            <div class="flex justify-center gap-6">
+                <a href="https://github.com/muzihuaner/docker-install/" class="text-slate-400 hover:text-slate-900 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 初始化代码高亮
+        hljs.highlightAll();
+
+        // 复制按钮逻辑
+        const clipboard = new ClipboardJS('.copy-btn');
+
+        clipboard.on('success', function(e) {
+            const originalText = e.trigger.textContent;
+            e.trigger.textContent = '已成功复制';
+            e.trigger.classList.add('text-emerald-400');
+            
+            setTimeout(() => {
+                e.trigger.textContent = originalText;
+                e.trigger.classList.remove('text-emerald-400');
+            }, 2000);
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function(e) {
+            e.trigger.textContent = '复制失败';
+            setTimeout(() => { e.trigger.textContent = '复制命令'; }, 2000);
+        });
+    </script>
+</body>
+
+</html>
